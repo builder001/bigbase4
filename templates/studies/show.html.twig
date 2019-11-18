@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Study show{% endblock %}
+
+{% block body %}
+    <nav class="mt-2" aria-label="breadcrumb">
+        <ol class="breadcrumb bg-warning">
+            <li class="breadcrumb-item"><a href="{{ path('app_homepage') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('study_index') }}">Studies list</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Study</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-sm-3 border-right">
+            <h4 class="d-flex">
+                <span class="text-muted">Actions</span>
+            </h4>
+            <div class="btn-group-vertical">
+                <a href="{{ path('study_new') }}" class="btn btn-sm btn-block btn-primary"><i class="fas fa-plus" aria-hidden="true"></i> New study</a>
+                <a href="#" class="btn btn-success btn-sm"><i class="fas fa-edit" aria-hidden="true"></i> Edit study</a>
+                {{ include('studies/_delete_form.html.twig', {study: study}, with_context = false) }}
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <h4 class="d-flex">
+                <span class="text-muted">Study</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-125">
+                    <div>
+                        <h6 class="my-0">Id</h6>
+                    </div>
+                    <span class="text-muted">{{ study.id }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-125">
+                    <div>
+                        <h6 class="my-0">Code</h6>
+                    </div>
+                    <span class="text-muted">{{ study.code }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-125">
+                    <div>
+                        <h6 class="my-0">Title</h6>
+                    </div>
+                    <span class="text-muted">{{ study.title }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

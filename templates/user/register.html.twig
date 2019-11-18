@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>User registration</h2>
+            <div class="alert alert-info" role="alert">
+                If you've never logged in to Bigbase before, please enter your credentials in the box below and click "Register".
+            </div>
+            {{ form_start(form) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.plainPassword.first, {'label':'Password'}) }}
+            {{ form_row(form.plainPassword.second, {'label':'Repeat Password'}) }}
+            <button type="submit" class="btn btn-warning" formnovalidate>Register</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

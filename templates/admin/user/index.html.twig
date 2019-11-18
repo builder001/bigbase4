@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="btn-group-vertical" role="group">
+                <a href="{{ path('admin_user_new') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus" aria-hidden="true"></i> New user</a>
+            </div>
+        </div>
+        <div class="col-sm">
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr class="table-info">
+                    <th scope="col">Id</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Roles</th>
+                    <th scope="col" class="text-center"><i class="fas fa-cogs" aria-hidden="true"></i> Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr class="table-secondary">
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.roles|json_encode() }}</td>
+                        <td class="text-center">
+                            <div>
+                                <a href="{{ path('admin_user_show',{id:user.id}) }}" class="btn btn-sm btn-secondary"><i class="fas fa-eye" aria-hidden="true"></i> Show</a>
+                                <a href="#" class="btn btn-sm btn-dark"><i class="fas fa-edit" aria-hidden="true"></i> Edit</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" align="center">No users found.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

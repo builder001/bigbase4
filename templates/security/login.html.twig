@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form _self %}
+
+{% block form_row %}
+    <div class="form-group row">
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        <div class="col-sm-8">
+            {{ form_widget(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+            <div class="card shadow mt-3">
+                <div class="card-header">
+                    Login to Bigbase
+                </div>
+                <div class="card-body">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    <p class="card-text">
+                        <a href="{{ path('user_register') }}">Register</a>
+                    </p>
+
+                    {{ form_start(form) }}
+
+                    {{ form_row(form._username, {'label_attr':{'class':'col-sm-2 col-form-label'}}) }}
+
+                    {{ form_row(form._password, {'label_attr':{'class':'col-sm-2 col-form-label'}}) }}
+
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+                            <button type="submit" class="btn btn-warning mx-auto"><i class="fas fa-lock fa-xs"></i> Login</button>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+{% endblock %}
